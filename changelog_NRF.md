@@ -1,13 +1,13 @@
 # changelog for the NRF firmware
 
-## 1.10 (31/1/2023)
-- fixed bug in time handling where the time skipped from 28/1/2023 to 1/3/2023
+## 1.10 (31/01/2023)
+- fixed bug in time handling where the time skipped from 28/01/2023 to 01/03/2023
 - added sim-iccid in the hello message
 
-## 1.9 (26/1/2023)
+## 1.9 (26/01/2023)
 - changed time state (modem or config) behaviour to not be persistent and reset with power cycle
 
-## 1.8 (4/1/2023)
+## 1.8 (4/01/2023)
 - fixed issue with network operator not providing the time
 
 ## 1.7.1 (12/12/2022)
