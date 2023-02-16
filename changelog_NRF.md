@@ -1,4 +1,4 @@
-# changelog for the NRF firmware
+# Changelog for the NRF firmware of the Telraam S2 devices
 
 ## 1.10 (31/01/2023)
 - fixed bug in time handling where the time skipped from 28/01/2023 to 01/03/2023
