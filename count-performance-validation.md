@@ -4,6 +4,10 @@ We are continuously working on improving the AI which is responsible for the tra
 
 In order to evaluate the count performance of any K210 firmware of the AI chip (this one is responsible for counting objects) we use a debugging tool, which can emulate the performance of the firmware on simple video files (recorded with, e.g., a GoPro camera). As input we have assembled a set of 12 short videos (2-6 minutes) covering various streets across Leuven, Brussels, and London; ranging from cycling and pedestrian areas to 2×3 lane express roads, and representing various traffic and weather conditions. We derived the true number of road users from these videos by manual counting, and we used the debugging tool to get the totals that would be counted by our Telraam S2 devices.
 
+## K210 FW version 393476
+
+No changes on the count performance.
+
 ## K210 FW version 327940 (evaluation done on 31/01/2023)
 
 ![FW 327940 count evaluation](/assets/327940_counts.png)
