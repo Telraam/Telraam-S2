@@ -1,4 +1,4 @@
-# Changelog for the K210 firmware of the Telraam S2 devices
+# Change log for the K210 firmware of the Telraam S2 devices
 
 ## 393476 (21/02/2023)
 - speed data (for cars) is now better calibrated using actual speed measurements (calibration parameter was incorrectly left out of FW 327940)
