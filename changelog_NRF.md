@@ -1,8 +1,11 @@
 # Change log for the NRF firmware of the Telraam S2 devices
 
-## 1.11 (06/03/2023)
+## 1.12 (27/03/2023)
+- ROI setting stability fixed (manual setting was sometimes not applied after a reboot cycle and the automated selection was applied instead)
+
+## 1.11 (06/03/2023 - only for internal testing)
 - show skippable message when firmware update is ongoing
-- small bug-fixes (total counter handling on boot, FW update time limit adjustment, line spacing in error message screen)
+- small bug-fixes (total counter handling on boot, FW update time limit adjustment, line spacing adjusted on error message screen)
 
 ## 1.10 (31/01/2023)
 - fixed bug in time handling where the time skipped from 28/01/2023 to 01/03/2023
