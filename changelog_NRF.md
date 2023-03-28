@@ -1,7 +1,7 @@
 # Change log for the NRF firmware of the Telraam S2 devices
 
 ## 1.13 (28/03/2023)
-- Further fine-tuning of manually and automatically selected ROI storage in flash memory (only manually set is persistent) and communication between devices and backend.
+- further fine-tuning of manually and automatically selected ROI storage in flash memory (only manually set is persistent) and communication between devices and backend
 
 ## 1.12 (27/03/2023 - only for internal testing)
 - ROI setting stability fixed (manual setting was sometimes not applied after a reboot cycle and the automated selection was applied instead)
