@@ -9,6 +9,7 @@
 ## 1.11 (06/03/2023 - only for internal testing)
 - show skippable message when firmware update is ongoing
 - small bug-fixes (total counter handling on boot, FW update time limit adjustment, line spacing adjusted on error message screen)
+- NB-IoT fallback
 
 ## 1.10 (31/01/2023)
 - fixed bug in time handling where the time skipped from 28/01/2023 to 01/03/2023
