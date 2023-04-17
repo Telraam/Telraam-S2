@@ -1,5 +1,8 @@
 # Change log for the NRF firmware of the Telraam S2 devices
 
+## 1.14 (17/04/2023)
+-Bug fixed where setting roi=666 triggered a reboot, but roi=666 was not saved before rebooting.  In this fw, roi is saved before rebooting.
+
 ## 1.13 (28/03/2023)
 - further fine-tuning of manually and automatically selected ROI storage in flash memory (only manually set is persistent) and communication between devices and backend
 
