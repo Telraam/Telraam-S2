@@ -6,28 +6,31 @@
 https://s3.console.aws.amazon.com/s3/buckets/telraam-sensor-v2-config?prefix=firmware_binaries/
 Reame it to `nrf_x_yy.bin` before uploading.
 
-2. Create a dynamic firmware config
+2. Make sure your device is on the current production nrf firmware
+Check the firmware config file: https://s3.console.aws.amazon.com/s3/object/telraam-sensor-v2-config?region=eu-central-1&prefix=firmware_config.json
+
+3. Create a dynamic firmware config
 Use the nrf firmware to test and the K210 fiwmare you want to use.
 e.g.: `{"_comment_": "Test Carl", "NRF": "nrf_1_13.bin", "NRF_version": "1.13", "K210": "k210_binary_4_1_6.bin", "K210_version": 393476}` (put it in 1 line)
 Save the file as `<device_id>.json`
 
-3. Upload the dynamic firmware config to S3
+4. Upload the dynamic firmware config to S3
 https://s3.console.aws.amazon.com/s3/buckets/telraam-sensor-v2-config?prefix=firmware_config_dynamic/
 
-4. Connect the device to your laptop to start monitoring the console logs
+5. Connect the device to your laptop to start monitoring the console logs
 
-5. Start the console logging
+6. Start the console logging
 Install the drivers first when this is not done already (https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=overview) .
 `screen /dev/tty.usbserial-0001 115200`(tty device can be different)
 
-6. The device should upgrade now, monitor the console logs for anything strange. 
+7. The device should upgrade now, monitor the console logs for anything strange. 
  
-7. Delete the dynamic config and reboot the device
+8. Delete the dynamic config and reboot the device
 https://s3.console.aws.amazon.com/s3/buckets/telraam-sensor-v2-config?prefix=firmware_config_dynamic/
 
-8. The device should downgrade after the reboot
+9. The device should downgrade after the reboot
 
-9. Repeat steps 2-6 to upgrade the device again to the NRF firmware that we are testing
+10. Repeat steps 2-6 to upgrade the device again to the NRF firmware that we are testing
 
 ###### Upgrade test: ok / nok
 ###### Downgrade test: ok / nok 
@@ -59,7 +62,8 @@ Or send this message to the device:
 ## 3. Test K210 up- and downgrade on the new NRF firmware.
 1. Make sure the device is on the correct NRF firmware
 
-2. Repeat steps 2 through 6 from the up- and downgrade test, but now use an old and the current K210 firmware
+2. Repeat steps 2 through 6 from the nrf up- and downgrade test, but now use an old and the current K210 firmware
+`{"_comment_": "Carl's device", "NRF": "nrf_1_13.bin", "NRF_version": "1.13", "K210": "k210_binary_4_1_5.bin", "K210_version": 327940}`
  
 ###### Upgrade test: ok / nok
 ###### Downgrade test: ok / nok 
@@ -168,6 +172,9 @@ https://telraam-api.net/v1/private/s2/message
 
 8. This message should not be skippable.
 
+9. Clear the message, see step 4. 
+
+
 ###### skippable message: ok / nok
 ###### clearing message: ok / nok 
 ###### non-skippable message: ok / nok 
@@ -225,6 +232,9 @@ https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/fun
   "update-config": false
 }`
 
+5. Check the image with the new ROI
+https://s3.console.aws.amazon.com/s3/buckets/telraam-street-pictures?region=eu-central-1&tab=objects
+
 ###### ROI was set to 0: ok / nok 
 ###### ROI was set to something else: ok / nok 
 ###### pictures arrived on S3 and had different zoom levels: ok / nok 
@@ -243,7 +253,7 @@ https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/fun
 2. Boot into debug mode
 Hold down the button during startup
 
-3. Let the device count traffic (at least 8) to see whether the ROI=666 gets updated to something else
+3. Let the device count traffic (at least 10) to see whether the ROI=666 gets updated to something else
 
 ###### ROI was set to 666: ok / nok 
 ###### ROI auto selection in debug mode: ok / nok 
@@ -259,6 +269,47 @@ https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/fun
   "update-config": true
 }`
 
+2. Check the console logs
+
+3. Request an image
+https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions/api-Sv2-set-and-get-ROI/aliases/prod?tab=testing
+`{
+  "device-id": "352656104870798",
+  "ROI": -1,
+  "request-image": true,
+  "update-config": false
+}`
+
+5. Check the image with the new ROI
+https://s3.console.aws.amazon.com/s3/buckets/telraam-street-pictures?region=eu-central-1&tab=objects
+
+6. Reboot the device
+
+7. Check the console logs for the fixed ROI to be applied
+
+8. Request an image
+https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions/api-Sv2-set-and-get-ROI/aliases/prod?tab=testing
+`{
+  "device-id": "352656104870798",
+  "ROI": -1,
+  "request-image": true,
+  "update-config": false
+}`
+
+9. Check the image with the new ROI
+https://s3.console.aws.amazon.com/s3/buckets/telraam-street-pictures?region=eu-central-1&tab=objects
+
+10. Reset the ROI to 666
+Delete the region-of-interest key from the dynamic config
+Upload the dynamic config
+Reboot the device
+Check the console logs for `Launched automatic ROI search`
+
+###### image had the new ROI: ok / nok 
+###### fixed ROI still fine after reboot: ok / nok 
+###### ROI reset to 666: ok / nok 
+&nbsp;
+
 ### 5.8 Test if we can point the device to our test environment
 1. Send a config-update to the device pointing it to the test environment
 `{
@@ -272,7 +323,7 @@ https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/fun
 2. Check in the console logs that the message arrives on the device
 
 3. Check in the console logs that the devices reconnects the LTE link
-This is necessary beacuse the devices will reconnect to Thingstream and will subscribe to a different topic 
+This is necessary because the devices will reconnect to Thingstream and will subscribe to a different topic 
 
 4. After an automatic config-report and config-update cycle, the device should go back to the prod environment
 
@@ -301,20 +352,96 @@ https://eu-central-1.console.aws.amazon.com/cloudwatch/home?region=eu-central-1#
 &nbsp;
 
 ### 5.10 Check if ROI is stable.
+1. Fix ROI to something
+https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions/api-Sv2-set-and-get-ROI/aliases/prod?tab=testing
+`{
+  "device-id": "352656104870798",
+  "ROI": 9,
+  "request-image": true,
+  "update-config": true
+}`
+
+2. Check the image with the new ROI
+https://s3.console.aws.amazon.com/s3/buckets/telraam-street-pictures?region=eu-central-1&tab=objects
+
+3. Power cycle the device
+
+4. Request an image 
+https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions/api-Sv2-set-and-get-ROI/aliases/prod?tab=testing
+`{
+  "device-id": "352656104870798",
+  "ROI": -1,
+  "request-image": true,
+  "update-config": false
+}`
+
+5. Check the image
+https://s3.console.aws.amazon.com/s3/buckets/telraam-street-pictures?region=eu-central-1&tab=objects
+
+6. Reboot the device via the api, send this message to the device
+`{
+    "device": "352656104870798",
+    "message": {
+        "message-type": "debug-cmd",
+        "reset": true
+    }
+}
+`
+
+7. Request an image 
+https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions/api-Sv2-set-and-get-ROI/aliases/prod?tab=testing
+`{
+  "device-id": "352656104870798",
+  "ROI": -1,
+  "request-image": true,
+  "update-config": false
+}`
+
+8. Check the image
+https://s3.console.aws.amazon.com/s3/buckets/telraam-street-pictures?region=eu-central-1&tab=objects
+
+9. Delete the dynamic config
+https://s3.console.aws.amazon.com/s3/buckets/telraam-sensor-v2-config?prefix=config_dynamic%2F&region=eu-central-1#
+
+###### ROI ok after power cycle: ok / nok 
+###### ROI ok after reboot via api: ok / nok 
+&nbsp;
+
 ## 6 Let the 8 devices run for 3 days to see if everything is still fine (not more reboots than expected, no data loss, etc.)
 1. Check the devices for reboots in athena
 Go to https://eu-central-1.console.aws.amazon.com/athena/home?region=eu-central-1#/query-editor/
 And execute `select *
 from "telraam"."online_notification"
-where cast("device-id" as bigint)=352656104870798
-order by "timestamp" desc`
+where cast("device-id" as bigint) in (
+350457790597577,
+350457790598740,
+350457790597650,
+350457790626681,
+350457790597676,
+350457790600256,
+350457790600793,
+350457790600603
+)
+order by "device-id", "timestamp" desc`
 
 2. Check if devices kept sending count data to the DB
-`select * from telraam.aggregate_info
-where device_id=352656104870798
+`select device_id, extract(epoch from date) as epoch,*
+from telraam.aggregate_info
+where device_id in (
+350457790597577,
+350457790598740,
+350457790597650,
+350457790626681,
+350457790597676,
+350457790600256,
+350457790600793,
+350457790600603
+)
+and period='quarterly'
+and segment_id=-1
 and date>now()-interval '3 days'
-order by date desc`
-
+order by device_id,date`
+Check for gaps in the dates and bad uptime (pct)
 ###### reboots: ok / nok 
 ###### counts: ok / nok 
 &nbsp;
