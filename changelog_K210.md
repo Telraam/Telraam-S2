@@ -1,5 +1,8 @@
 # Change log for the K210 firmware of the Telraam S2 devices
 
+## 66052 - 4.2.1 (5/10/2023)
+- 2 day models -> test if flashing both models is ok
+
 ## 516 - 4.2.0 (4/10/2023)
 - adjusted hysteresis limits changed from 0.13/0.23 -> 0.25/0.3 for night/day switch
 
