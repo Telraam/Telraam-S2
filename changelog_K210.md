@@ -12,10 +12,10 @@
 ## 524548 - 4.1.8 (22/9/2023)
 - first night counts firmware (bricked device)
 
-## 459012 (19/04/2023)
+## 459012 - 4.1.7 (19/04/2023)
 - minor fixes (buffer overflow handling) - no effect on count accuracy and precision
 
-## 393476 (21/02/2023)
+## 393476 - 4.1.6 (21/02/2023)
 - speed data (for cars) is now better calibrated using actual speed measurements (calibration parameter was incorrectly left out of FW 327940)
 
 ## 327940 (03/02/2023)
