@@ -1,5 +1,14 @@
 # Change log for the K210 firmware of the Telraam S2 devices
 
+## 516 - 4.2.0 (4/10/2023)
+- adjusted hysteresis limits changed from 0.13/0.23 -> 0.25/0.3 for night/day switch
+
+## 524548 - 4.1.9 (3/10/2023)
+- firmware built with script for 2 models
+
+## 524548 - 4.1.8 (22/9/2023)
+- first night counts firmware (bricked device)
+
 ## 459012 (19/04/2023)
 - minor fixes (buffer overflow handling) - no effect on count accuracy and precision
 
