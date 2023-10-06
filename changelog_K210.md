@@ -1,5 +1,11 @@
 # Change log for the K210 firmware of the Telraam S2 devices
 
+## 197124 - 4.2.3 (6/10/2023)
+- fixed bug in firmwarepack.py
+
+## 131588 - 4.2.2 (5/10/2023)
+- switched day and night models for testing -> night model should start when it is bright outside
+
 ## 66052 - 4.2.1 (5/10/2023)
 - 2 day models -> test if flashing both models is ok
 
