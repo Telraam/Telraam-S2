@@ -1,5 +1,8 @@
 # Change log for the NRF firmware of the Telraam S2 devices
 
+## 1.14.1 (3/10/2023)
+- support for 2 K210 models (for day and night counts)
+
 ## 1.14 (17/04/2023)
 - bug fixed where setting roi=666 triggered a reboot, but roi=666 was not saved before rebooting.  In this fw, roi is saved before rebooting.
 
