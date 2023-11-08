@@ -1,5 +1,8 @@
 # Change log for the NRF firmware of the Telraam S2 devices
 
+## 1.15.0 (7/11/2023)
+- first release with support for outdoor sensor
+
 ## 1.14.1 (3/10/2023)
 - support for 2 K210 models (for day and night counts)
 
