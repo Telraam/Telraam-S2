@@ -1,5 +1,8 @@
 # Change log for the K210 firmware of the Telraam S2 devices
 
+## 66308 - 4.3.1 (13/03/2024)
+- night counts added (beta release)
+
 ## 328196 - 4.2.5 (10/10/2023)
 - fixed bug in firmwarepack.py (was reintroduced in 4.2.4)
 - changed brightness calculation -> 30s window average
