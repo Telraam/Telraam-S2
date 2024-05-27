@@ -3,6 +3,7 @@
 ## 1.15.1-rc3 (13/03/2024)
 - compatibility updates for the night counts
 - other bugfixes
+- fleet wide release date 27/05/2024
 
 ## 1.15.0 (7/11/2023)
 - first release with support for outdoor sensor
