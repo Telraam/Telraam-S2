@@ -1,5 +1,8 @@
 # Change log for the K210 firmware of the Telraam S2 devices
 
+## 393988 - 4.3.6 (06/05/2024)
+- night counts added (production release)
+
 ## 66308 - 4.3.1 (13/03/2024)
 - night counts added (beta release)
 
