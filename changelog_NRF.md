@@ -1,4 +1,7 @@
 # Change log for the NRF firmware of the Telraam S2 devices
+## 1.17.1 (18/09/2024)
+- merged indoor, outdoor and 1NCE functionality in 1 FW
+- various improvements and bug-fixes
 
 ## 1.16 (06/06/2024)
 - FW specific to devices with a 1NCE sim card (functionality will be merged to general fleet-wide FW in 1.17)
