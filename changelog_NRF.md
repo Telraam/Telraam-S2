@@ -1,4 +1,14 @@
 # Change log for the NRF firmware of the Telraam S2 devices
+## 1.19 (07/03/2025)
+- support for LED-PCB on new outdoor device
+- support for 1NCE Brasil ICCID
+- various improvements and bug-fixes
+
+## 1.18 (14/01/2025)
+- update Thingstream library
+- Improved handling of K210 data and K210 communication, in case of K210-reset less data will be lost
+- various improvements and bug-fixes
+
 ## 1.17.1 (18/09/2024)
 - merged indoor, outdoor and 1NCE functionality in 1 FW
 - various improvements and bug-fixes
