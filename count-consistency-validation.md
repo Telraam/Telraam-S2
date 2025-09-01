@@ -39,7 +39,7 @@ To avoid having to deal with the ill efects of small number statistics, we use t
 | Two-wheelers   | 88%          |
 | Pedestrians    | 83%          |
 
-This is the metric that shows how much of a scatter is expected between measurements of different Telraam S2 devices installed on the very same location, at approximately the same ROI setting. Worth nothing, that a very different, sub-optimal ROI setting could negatively influence the results, that is why setting the ROI during the installation process is recommended to our users.
+This is the metric that shows how much of a scatter is expected between measurements of different Telraam S2 devices installed on the very same location, at approximately the same ROI setting. Worth noting, that a very different, sub-optimal ROI setting could negatively influence the results, that is why setting the ROI during the installation process is recommended to our users.
 
 These values are less well established compared to our accuracy validation, as it is practically much more difficult to repeat this exercise at different locations, although optimally one would like to do that to have a broader sample. Moreover for modes with a smaller sample size, such as basically anything besides cars, a location where more objects could be observed might result in slightly different results. But in general this experiment gives a good estimate, and we can safely say that Telraam S2 devices count consistently, and the accuracy values are not negatively influenced by an in comparison potentially much worse device-to-device precision.
 
